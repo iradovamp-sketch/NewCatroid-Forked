@@ -23,7 +23,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <string name="formula_voxel_get_id" formatted="false">Voxel_получить_id</string>
+    <string name="formula_voxel_get_id" formatted="false">ЪЪЪ</string>
     <string name="formula_voxel_get_id_param" formatted="false">(\'worldId\', x, y, z)</string>
     <string name="formula_voxel_get_data" formatted="false">Voxel_получить_данные</string>
     <string name="formula_voxel_get_data_param" formatted="false">(\'worldId\', x, y, z)</string>
