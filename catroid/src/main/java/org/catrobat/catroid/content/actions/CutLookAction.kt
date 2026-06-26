@@ -47,6 +47,9 @@ import java.util.ArrayList
 import kotlin.math.abs
 
 class CutLookAction() : TemporalAction() {
+    private var originalLook: LookData? = null
+    private var currentSourceLook: LookData? = null
+
     var scope: Scope? = null
     var x1: Formula? = null
     var y1: Formula? = null
@@ -58,10 +61,15 @@ class CutLookAction() : TemporalAction() {
         val y1_i: Int = y1?.interpretInteger(scope) ?: 0
         val x2_i: Int = x2?.interpretInteger(scope) ?: 0
         val y2_i: Int = y2?.interpretInteger(scope) ?: 0
-        val lookData: LookData? = scope?.sprite?.look?.lookData
+        val current = scope?.sprite?.look?.lookData
+        if (current !== currentSourceLook) {
+            currentSourceLook = current
+            originalLook = current
+        }
+        val lookData: LookData? = current
 
         lookData?.let {
-            val file: File = it.file
+            val file: File = (originalLook?.file ?: it.file)
             try {
                 val originalBitmap = BitmapFactory.decodeFile(file.absolutePath)
                 if (originalBitmap == null) {
